@@ -1,0 +1,72 @@
+/* These 2 lines are because the new fancybox hates html having overflow-y set to scroll.  It makes a second scrollbar upon opening. */
+.fancybox-lock .fancybox-overlay{ overflow:auto !important; overflow-y:hidden !important; }
+body							{ margin-right:0px !important; }
+/*************************************************************************************************************************************/
+
+#gallery_left					{ width:40%; float:left; }
+#gallery_right					{ width:55%; float:right; position:relative; }
+#ajax-loader					{ position:absolute; top:30px; left:50%; z-index:99; display:none; }
+
+#thumbs							{ list-style:none; margin:0 !important; }
+#thumbs:after					{ content:"."; display:block; height:0; clear:both; zoom:1; visibility:hidden; }
+#thumbs li						{ margin:1.3% 0 0 1.3% !important; float:left; width:24%; position:relative; left:0; top:0; }
+#thumbs a						{ display:block; text-decoration:none; position:relative; }
+#thumbs a:after					{ content:""; width:100%; height:100%; display:block; border:0px rgba(0,0,0,.20) solid; position:absolute; left:0; top:0;
+								-webkit-transition: all 150ms ease;
+								-moz-transition: all 150ms ease;
+								-ms-transition: all 150ms ease;
+								-o-transition: all 150ms ease;
+								transition: all 150ms ease;
+								}
+#thumbs a:hover:after			{ border-width:10px; }
+#thumbs img						{ width:100%; display:block; }
+#thumbs a:hover					{ text-decoration:none; }
+
+#photo_wrap						{ clear:both; margin:0; background:rgba(0,0,0,.10); }
+#photo_wrap.full				{ width:100%; }
+#photo_wrap.shared				{ width:60%; float:left; }
+
+#photo							{ display:block; margin:0 auto; max-width:80%; padding:15px 0; }
+
+#left							{ float:left; }
+#right							{ float:right; }
+#nav							{ clear:both; margin-bottom:30px; }
+#prev							{ float:left; }
+#next							{ float:right; }
+
+#content_wrap					{ width:38%; margin:0; float:right; border:1px #e4e4e4 solid; }
+#gallery_left #content_wrap		{ width:100%; margin:5% 0 0; }
+#content_padding				{ padding:20px; }
+
+.swiper > li					{ display:none; }
+.swiper > li:first-child		{ display:block; }
+
+@media (max-width:500px){
+	#content_wrap				{ width: 100%; }
+	#photo_wrap					{ width: 100% !important; }
+	.fancybox-nav				{ max-width:30px !important; }
+}
+
+@media (min-width:600px) {
+	#thumbs li:nth-child(4n+1)	{ margin-left:0 !important; }
+}
+
+@media (max-width:599px){
+	#gallery_left				{ width:100%; }
+	#gallery_left #content_wrap	{ display:none; }
+	#gallery_right				{ display:none; }
+}
+
+@media (max-width:599px) and (min-width:500px){	
+	#thumbs li					{ width:32.46%; }
+	#thumbs li:nth-child(3n+1)	{ margin-left:0 !important; }
+}
+
+@media (max-width:499px) and (min-width:400px){
+	#thumbs li					{ width:49.35%; }
+	#thumbs li:nth-child(2n+1)	{ margin-left:0 !important; }
+}
+
+@media (max-width:399px){
+	#thumbs li					{ margin-left:0 !important; margin-top:2.6% !important; width:100%; }
+}
