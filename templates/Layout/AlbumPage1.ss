@@ -3,9 +3,9 @@ $Content
 <% if AlbumPage_Images %>
     <div id="gallery_left">
         <ul id="thumbs">
-            <% control AlbumPage_Images %>
-                <li><a href="$ImagePageLink" class="fancy_link" rel="fancy_group" data-id="$ID"><img src="$GetThumbURL" alt="$Alt" title="$Title" /></a></li>
-            <% end_control %>
+            <% loop AlbumPage_Images %>
+                <li><a href="$ImagePageLink" class="fancy_link" rel="fancy_group" data-id="$ID"><img src="$GetAlbumThumbURL" alt="$Alt" title="$Title" /></a></li>
+            <% end_loop %>
         </ul><!--thumbs-->
         <div id="ajax_text">
             <!-- ajax title and desc here -->

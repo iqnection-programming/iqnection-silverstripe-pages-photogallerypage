@@ -61,58 +61,74 @@
 		public function canEdit($member = null) { return true; }
 		public function canView($member = null) { return true; }
 				
-		public function GetThumbURL()
+		public function GetAlbumThumbURL()
 		{
-			if( $this->FullsizeImageID ) {
-				if( $img = $this->FullsizeImage() ) {
-					if( $cropped = $img->CroppedImage(340,340) )
-						return $cropped->Filename;
+			if ( ($this->FullsizeImageID) && ($img = $this->FullsizeImage()) )
+			{
+				$Width = ($this->AlbumPage()->ThumbnailWidth) ? $this->AlbumPage()->ThumbnailWidth : 340;
+				$Height = ($this->AlbumPage()->ThumbnailHeight) ? $this->AlbumPage()->ThumbnailHeight : 340;
+				if ($cropped = $img->CroppedImage($Width,$Height))
+				{
+					return $cropped->getURL();
 				}
 			}
 			return "";
 		}
 		
-		public function GetMobileThumbURL()
+		public function GetGalleryThumbURL()
 		{
-			if( $this->FullsizeImageID ) {
-				if( $img = $this->FullsizeImage() ) {
-					if( $cropped = $img->CroppedImage(500,500) )
-						return $cropped->Filename;
-				}
-			}
-			return "";
-		}
-		
-		public function GetBigURL()
-		{
-			if( $this->FullsizeImageID ) {
-				if( $img = $this->FullsizeImage() ) {
-					if( $img->getWidth() > 1000 && $img->getHeight() > 800 ){
-						$cropped = $img->CroppedImage(1000,800);
-					} else if( $img->getWidth() > 1000 ){
-						$cropped = $img->setWidth(1000);
-					} else if ( $img->getHeight() > 800 ){
-						$cropped = $img->setHeight(800);
-					}
-					if($cropped)
-						return $cropped->Filename;
-					else
-						return $img->Filename;
+			if ( ($this->FullsizeImageID) && ($img = $this->FullsizeImage()) )
+			{
+				$Width = ($this->AlbumPage()->Parent()->ThumbnailWidth) ? $this->AlbumPage()->Parent()->ThumbnailWidth : 340;
+				$Height = ($this->AlbumPage()->Parent()->ThumbnailHeight) ? $this->AlbumPage()->Parent()->ThumbnailHeight : 340;
+				if ($cropped = $img->CroppedImage($Width,$Height))
+				{
+					return $cropped->getURL();
 				}
 			}
 			return "";
 		}
 				
-		public function ImagePageLink(){
+		public function GetBigURL()
+		{
+			if( $this->FullsizeImageID ) 
+			{
+				if( $img = $this->FullsizeImage() ) 
+				{
+					$Width = ($Width=$this->AlbumPage()->FullSizeWidth) ? $Width : 1000;
+					$Height = ($Height=$this->AlbumPage()->FullSizeHeight) ? $Height : 800;
+					if( $img->getWidth() > $Width && $img->getHeight() > $Height )
+					{
+						$cropped = $img->CroppedImage($Width,$Height);
+					}
+					elseif( $img->getWidth() > $Width )
+					{
+						$cropped = $img->setWidth($Width);
+					} 
+					elseif ( $img->getHeight() > $Height )
+					{
+						$cropped = $img->setHeight($Height);
+					}
+					if($cropped)
+					{
+						return $cropped->Filename;
+					}
+					else
+					{
+						return $img->Filename;
+					}
+				}
+			}
+			return "";
+		}
+				
+		public function ImagePageLink()
+		{
 			return $this->AlbumPage()->AbsoluteLink()."photo/".$this->ID;
 		}
 		
-		public function MobileImagePageLink(){
-			if ($mobile_page = DataObject::get_one("SiteTree", "ClassName = 'MobileSite'"))
-				return preg_replace("/\/$/", "", $mobile_page->AbsoluteLink()).$this->AlbumPage()->Link()."photo/".$this->ID;
-		}
-		
-		public function NeedsContent(){
+		public function NeedsContent()
+		{
 			return $this->Title || $this->Description;	
 		}
 	}
@@ -120,10 +136,21 @@
 	class AlbumPage extends Page
 	{
 		private static $db = array(
+			'ThumbnailWidth' => 'Int',
+			'ThumbnailHeight' => 'Int',
+			'FullSizeWidth' => 'Int',
+			'FullSizeHeight' => 'Int'
 		);
 		
 		private static $has_many = array(
 			"AlbumPage_Images" => "AlbumPage_Image"
+		);
+		
+		private static $defaults = array(
+			'ThumbnailWidth' => '340',
+			'ThumbnailHeight' => '340',
+			'FullSizeWidth' => '1000',
+			'FullSizeHeight' => '800'
 		);
 		
 		public function getCMSFields()
@@ -131,6 +158,14 @@
 			
 			$fields = parent::getCMSFields();
 			
+			if (Permission::check('ADMIN'))
+			{
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new HeaderField('head1','Layout 2 Setup') );
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('ThumbnailWidth','Thumbnail Width') );
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('ThumbnailHeight','Thumbnail Height') );
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('FullSizeWidth','Full Size Width') );
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('FullSizeHeight','Full Size Height') );
+			}
 			$gallery_config = GridFieldConfig::create()->addComponents(				
 				new GridFieldSortableRows('SortOrder'),
 				new GridFieldToolbarHeader(),
@@ -147,10 +182,6 @@
 			return $fields;
 		}	
 				
-		public function MobilePageLink(){
-			if ($mobile_page = DataObject::get_one("SiteTree", "ClassName = 'MobileSite'"))
-				return preg_replace("/\/$/", "", $mobile_page->AbsoluteLink()).$this->Link();
-		}
 	}
 	  
 	class AlbumPage_Controller extends Page_Controller
@@ -211,14 +242,16 @@
 			return $js;
 		}
 		
-		public function index(){
+		public function index()
+		{
 			$type = $this->getLayoutType();
 						
 			$params = $this->getURLParams();
 			return $this->renderWith(array($type,"Page"));	
 		}
 		
-		public function getLayoutType(){
+		public function getLayoutType()
+		{
 			$type = $this->Parent()->Type;
 			
 			switch ($type) {
