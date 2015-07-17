@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.0.1]
+- Added CMS icons for page types
+
 ## [1.0.0]
 - First stable build
 - Gallery Thumbnail sizes are now set in the CMS (ADMIN only)

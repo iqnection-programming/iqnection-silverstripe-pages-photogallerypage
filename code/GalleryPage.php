@@ -1,6 +1,8 @@
 <?
 	class GalleryPage extends Page
 	{
+		private static $icon = "iq-photogallerypage/images/icon-gallerypage";
+		
 		private static $db = array(
 			"Type" => "Varchar(255)",
 			'ThumbnailWidth' => 'Int',
@@ -31,8 +33,8 @@
 			if (Permission::check('ADMIN'))
 			{
 				$fields->addFieldToTab('Root.Content.GallerySetup', new HeaderField('head1','Layout 2 Setup') );
-				$fields->addFieldToTab('Root.Content.GallerySetup', new NumericField('ThumbnailWidth','Thumbnail Width') );
-				$fields->addFieldToTab('Root.Content.GallerySetup', new NumericField('ThumbnailHeight','Thumbnail Height') );
+				$fields->addFieldToTab('Root.Content.GallerySetup', new NumericField('ThumbnailWidth (default: 340)','Thumbnail Width') );
+				$fields->addFieldToTab('Root.Content.GallerySetup', new NumericField('ThumbnailHeight (default: 340)','Thumbnail Height') );
 			}
 			
 			return $fields;

@@ -135,6 +135,8 @@
 
 	class AlbumPage extends Page
 	{
+		private static $icon = "iq-photogallerypage/images/icon-albumpage";
+		
 		private static $db = array(
 			'ThumbnailWidth' => 'Int',
 			'ThumbnailHeight' => 'Int',
@@ -161,10 +163,10 @@
 			if (Permission::check('ADMIN'))
 			{
 				$fields->addFieldToTab('Root.Content.AlbumSetup', new HeaderField('head1','Layout 2 Setup') );
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('ThumbnailWidth','Thumbnail Width') );
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('ThumbnailHeight','Thumbnail Height') );
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('FullSizeWidth','Full Size Width') );
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('FullSizeHeight','Full Size Height') );
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('ThumbnailWidth','Thumbnail Width (default: 340)') );
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('ThumbnailHeight','Thumbnail Height (default: 340)') );
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('FullSizeWidth','Full Size Width (default: 1000)') );
+				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('FullSizeHeight','Full Size Height (default: 800)') );
 			}
 			$gallery_config = GridFieldConfig::create()->addComponents(				
 				new GridFieldSortableRows('SortOrder'),
