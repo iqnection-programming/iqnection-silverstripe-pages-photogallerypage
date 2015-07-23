@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.0.2]
+- Fixed issue when fancybox images were showing, the image was not full size
+
 ## [1.0.1]
 - Added CMS icons for page types
 

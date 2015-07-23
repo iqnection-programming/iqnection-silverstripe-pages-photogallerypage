@@ -89,7 +89,7 @@
 			return "";
 		}
 				
-		public function GetBigURL()
+		public function GetBigImage()
 		{
 			if( $this->FullsizeImageID ) 
 			{
@@ -99,27 +99,33 @@
 					$Height = ($Height=$this->AlbumPage()->FullSizeHeight) ? $Height : 800;
 					if( $img->getWidth() > $Width && $img->getHeight() > $Height )
 					{
-						$cropped = $img->CroppedImage($Width,$Height);
+						return $img->CroppedImage($Width,$Height);
 					}
 					elseif( $img->getWidth() > $Width )
 					{
-						$cropped = $img->setWidth($Width);
+						return $img->setWidth($Width);
 					} 
 					elseif ( $img->getHeight() > $Height )
 					{
-						$cropped = $img->setHeight($Height);
+						return $img->setHeight($Height);
 					}
-					if($cropped)
-					{
-						return $cropped->Filename;
-					}
-					else
-					{
-						return $img->Filename;
-					}
+					return $img;
 				}
 			}
 			return "";
+		}
+		
+		public function GetBigURL()
+		{
+			return ($Image = $this->GetBigImage()) ? $Image->getURL() : null;
+		}
+		
+		public function GetDivWidth()
+		{
+			if ($Image = $this->GetBigImage())
+			{
+				return ($this->NeedsContent()) ? $Image->getWidth() / 0.55 : $Image->getWidth();
+			}
 		}
 				
 		public function ImagePageLink()

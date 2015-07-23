@@ -1,6 +1,6 @@
-<% control Photo %>
+<% with Photo %>
     <div id="photo_wrap" class="<% if NeedsContent %>shared<% else %>full<% end_if %>">
-        <img id="photo" src="$GetBigURL" alt="$Alt" title="$Title" />
+        <img id="photo" src="$GetBigImage.URL" alt="$Alt" title="$Title" style="width:{$GetDivWidth}px" />
     </div><!--photo_wrap-->
     <% if NeedsContent %>
         <div id="content_wrap" class="typography">
@@ -10,4 +10,4 @@
             </div><!--content_padding-->
         </div><!--content_wrap-->
     <% end_if %>
-<% end_control %>
+<% end_with %>
