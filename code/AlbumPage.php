@@ -168,11 +168,11 @@
 			
 			if (Permission::check('ADMIN'))
 			{
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new HeaderField('head1','Layout 2 Setup') );
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('ThumbnailWidth','Thumbnail Width (default: 340)') );
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('ThumbnailHeight','Thumbnail Height (default: 340)') );
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('FullSizeWidth','Full Size Width (default: 1000)') );
-				$fields->addFieldToTab('Root.Content.AlbumSetup', new NumericField('FullSizeHeight','Full Size Height (default: 800)') );
+				$fields->addFieldToTab('Root.AlbumSetup', new HeaderField('head1','Layout 2 Setup') );
+				$fields->addFieldToTab('Root.AlbumSetup', new NumericField('ThumbnailWidth','Thumbnail Width (default: 340)') );
+				$fields->addFieldToTab('Root.AlbumSetup', new NumericField('ThumbnailHeight','Thumbnail Height (default: 340)') );
+				$fields->addFieldToTab('Root.AlbumSetup', new NumericField('FullSizeWidth','Full Size Width (default: 1000)') );
+				$fields->addFieldToTab('Root.AlbumSetup', new NumericField('FullSizeHeight','Full Size Height (default: 800)') );
 			}
 			$gallery_config = GridFieldConfig::create()->addComponents(				
 				new GridFieldSortableRows('SortOrder'),
@@ -185,7 +185,7 @@
 				new GridFieldDeleteAction(),
 				new GridFieldDetailForm()				
 			);
-			$fields->addFieldToTab('Root.Content.Images', new GridField('AlbumPage_Images','Album Images',$this->AlbumPage_Images(),$gallery_config));
+			$fields->addFieldToTab('Root.Images', new GridField('AlbumPage_Images','Album Images',$this->AlbumPage_Images(),$gallery_config));
 						
 			return $fields;
 		}	
@@ -206,24 +206,24 @@
 		function PageCSS()
 		{
 			return array_merge(
-				parent::PageCSS(),
 				array(
 					"iq-photogallerypage/css/pages/AlbumPage.css",
 					"iq-photogallerypage/fancybox/jquery.fancybox.css"
-				)
+				),
+				parent::PageCSS()
 			);
 		}
 		
 		function PageJS()
 		{
 			return array_merge(
-				parent::PageJS(),
 				array(
 					"iq-photogallerypage/javascript/pages/".$this->getLayoutType().".js",
 					"iq-photogallerypage/fancybox/jquery.fancybox.pack.js",
 					"iq-photogallerypage/javascript/jquery.touchSwipe.min.js",
 					"iq-photogallerypage/javascript/pages/AlbumPage_swipe.js"
-				)
+				),
+				parent::PageJS()
 			);
 		}
 		

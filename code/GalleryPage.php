@@ -22,8 +22,8 @@
 		public function getCMSFields()
 		{
 			$fields = parent::getCMSFields();
-			$fields->addFieldToTab("Root.Content.GallerySetup", new LiteralField("Desc1", "<p>The layout chosen below will affect all galleries under this page.  You may override this layout choice on individual gallery pages if you wish.</p><br />"));
-			$fields->addFieldToTab("Root.Content.GallerySetup", new OptionsetField("Type", "Choose your layout:", array(
+			$fields->addFieldToTab("Root.GallerySetup", new LiteralField("Desc1", "<p>The layout chosen below will affect all galleries under this page.  You may override this layout choice on individual gallery pages if you wish.</p><br />"));
+			$fields->addFieldToTab("Root.GallerySetup", new OptionsetField("Type", "Choose your layout:", array(
 				"All-In-One" => "<span>All-In-One<br /><img src='/iq-photogallerypage/css/images/photo_gallery_layout_1.gif' /></span>", 
 				"Large Thumbnails" => "<span>Large Thumbnails<br /><img src='/iq-photogallerypage/css/images/photo_gallery_layout_2.gif' /></span>"
 			)));
@@ -32,9 +32,9 @@
 			
 			if (Permission::check('ADMIN'))
 			{
-				$fields->addFieldToTab('Root.Content.GallerySetup', new HeaderField('head1','Layout 2 Setup') );
-				$fields->addFieldToTab('Root.Content.GallerySetup', new NumericField('ThumbnailWidth (default: 340)','Thumbnail Width') );
-				$fields->addFieldToTab('Root.Content.GallerySetup', new NumericField('ThumbnailHeight (default: 340)','Thumbnail Height') );
+				$fields->addFieldToTab('Root.GallerySetup', new HeaderField('head1','Layout 2 Setup') );
+				$fields->addFieldToTab('Root.GallerySetup', new NumericField('ThumbnailWidth','Thumbnail Width (default: 340)') );
+				$fields->addFieldToTab('Root.GallerySetup', new NumericField('ThumbnailHeight','Thumbnail Height (default: 340)') );
 			}
 			
 			return $fields;
@@ -51,10 +51,10 @@
 		function PageCSS()
 		{
 			return array_merge(
-				parent::PageCSS(),
 				array(
 					"iq-photogallerypage/css/pages/GalleryPage.css"
-				)
+				),
+				parent::PageCSS()
 			);
 		}
 	}  
