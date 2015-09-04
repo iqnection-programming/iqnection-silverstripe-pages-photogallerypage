@@ -2,7 +2,7 @@
 # Change Log
 
 
-## [1.0.2.1]
+## [1.0.3]
 - Updated Tab paths in getCMSFields()
 
 ## [1.0.2]
