@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.0.4]
+- Support for expandability of video gallery page as child
+
 ## [1.0.3]
 - Updated Tab paths in getCMSFields()
 

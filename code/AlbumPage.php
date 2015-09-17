@@ -188,6 +188,11 @@
 			$fields->addFieldToTab('Root.Images', new GridField('AlbumPage_Images','Album Images',$this->AlbumPage_Images(),$gallery_config));
 						
 			return $fields;
+		}
+		
+		function GalleryThumbnailURL()
+		{
+			return $this->AlbumPage_Images()->First()->GetGalleryThumbURL();
 		}	
 				
 	}
