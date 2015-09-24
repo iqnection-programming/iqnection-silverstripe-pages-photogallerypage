@@ -40,13 +40,14 @@ function initSwiper()
 
 function checkSwiper()
 {
-	if($(window).width() > 399 || !isTouch)
-	{
-		$("#thumbs").removeClass().swipe("disable");
-	}
-	else
-	{
-		$("#thumbs").addClass("swiper").swipe("enable");
-		c = $("#thumbs > li:first-child");
-	}
+    if($(window).width() > 399 || !isTouch)
+    {
+        $("#thumbs").removeClass().swipe("disable");
+        $("#thumbs li").removeAttr('style');
+    }
+    else
+    {
+        $("#thumbs").addClass("swiper").swipe("enable");
+        c = $("#thumbs > li:first-child");
+    }
 }
