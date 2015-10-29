@@ -194,7 +194,11 @@
 		{
 			return $this->AlbumPage_Images()->First()->GetGalleryThumbURL();
 		}	
-				
+		
+		function GalleryThumbnailAlt()
+		{
+			return $this->AlbumPage_Images()->First()->Alt;
+		}		
 	}
 	  
 	class AlbumPage_Controller extends Page_Controller

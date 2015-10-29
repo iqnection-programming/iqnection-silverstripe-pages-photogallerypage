@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.0.5]
+- Support for sub gallery pages
+
 ## [1.0.4]
 - Support for expandability of video gallery page as child
 

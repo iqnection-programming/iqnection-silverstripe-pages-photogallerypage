@@ -39,6 +39,16 @@
 			
 			return $fields;
 		}
+		
+		function GalleryThumbnailURL()
+		{
+			return $this->Children()->First()->GalleryThumbnailURL();
+		}
+		
+		function GalleryThumbnailAlt()
+		{
+			return $this->Children()->First()->GalleryThumbnailAlt();
+		}
 	}
 	  
 	class GalleryPage_Controller extends Page_Controller
