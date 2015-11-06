@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.0.6]
+- No more children for Album page
+
 ## [1.0.5]
 - Support for sub gallery pages
 

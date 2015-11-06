@@ -161,6 +161,8 @@
 			'FullSizeHeight' => '800'
 		);
 		
+		private static $allowed_children = array();
+		
 		public function getCMSFields()
 		{
 			
