@@ -265,8 +265,10 @@
 		{
 			$type = $this->getLayoutType();
 						
-			$params = $this->getURLParams();
-			return $this->renderWith(array($type,"Page"));	
+			$templates = array($type);
+			if ($this->MinisiteParent()) $templates[] = 'MinisitePage';
+			$templates[] = 'Page';
+			return $this->renderWith($templates);
 		}
 		
 		public function getLayoutType()

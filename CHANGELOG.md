@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.0.7]
+- Added support for Minisite
+
 ## [1.0.6]
 - No more children for Album page
 
