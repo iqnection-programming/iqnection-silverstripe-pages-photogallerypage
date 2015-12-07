@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.0.8]
+- Changed large image from cropped image to resized image
+
 ## [1.0.7]
 - Added support for Minisite
 

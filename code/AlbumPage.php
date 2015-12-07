@@ -99,7 +99,7 @@
 					$Height = ($Height=$this->AlbumPage()->FullSizeHeight) ? $Height : 800;
 					if( $img->getWidth() > $Width && $img->getHeight() > $Height )
 					{
-						return $img->CroppedImage($Width,$Height);
+						return $img->SetRatioSize($Width,$Height);
 					}
 					elseif( $img->getWidth() > $Width )
 					{
@@ -266,7 +266,7 @@
 			$type = $this->getLayoutType();
 						
 			$templates = array($type);
-			if ($this->MinisiteParent()) $templates[] = 'MinisitePage';
+			if (class_exists('IQMinisite_Page') && $this->MinisiteParent()) $templates[] = 'MinisitePage';
 			$templates[] = 'Page';
 			return $this->renderWith($templates);
 		}
