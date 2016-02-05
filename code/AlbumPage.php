@@ -194,6 +194,7 @@
 		
 		function GalleryThumbnailURL()
 		{
+			if(!$this->AlbumPage_Images()->Count()) return null;
 			return $this->AlbumPage_Images()->First()->GetGalleryThumbURL();
 		}	
 		

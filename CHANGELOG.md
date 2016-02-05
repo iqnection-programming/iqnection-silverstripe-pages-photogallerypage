@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.0.9]
+- Fixed error when there were no images in an album
+
 ## [1.0.8]
 - Changed large image from cropped image to resized image
 
