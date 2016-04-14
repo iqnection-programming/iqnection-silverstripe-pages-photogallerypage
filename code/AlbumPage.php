@@ -194,7 +194,6 @@
 		
 		function GalleryThumbnailURL()
 		{
-			if(!$this->AlbumPage_Images()->Count()) return null;
 			return $this->AlbumPage_Images()->First()->GetGalleryThumbURL();
 		}	
 		
@@ -213,6 +212,7 @@
 		public function init()
 		{
 			parent::init();
+			Config::inst()->update('SSViewer','rewrite_hash_links',false);
 		}
 		
 		function PageCSS()

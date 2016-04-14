@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.1.0]
+- Removed ajax loading of album images. Images are now printed in album page template.
+
 ## [1.0.9]
 - Fixed error when there were no images in an album
 

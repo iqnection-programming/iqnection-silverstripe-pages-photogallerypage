@@ -5,7 +5,7 @@ $(document).ready(function(){
 		scrolling:'auto',
 		scrollOutside:false,
 		arrows:true,
-		type:'ajax',
+//		type:'ajax',
 		helpers: {
 			overlay : {
 				locked: false
