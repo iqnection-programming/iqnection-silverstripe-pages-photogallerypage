@@ -194,12 +194,12 @@
 		
 		function GalleryThumbnailURL()
 		{
-			return $this->AlbumPage_Images()->First()->GetGalleryThumbURL();
+			return ($first = $this->AlbumPage_Images()->First()) ? $first->GetGalleryThumbURL() : null;
 		}	
 		
 		function GalleryThumbnailAlt()
 		{
-			return $this->AlbumPage_Images()->First()->Alt;
+			return ($first = $this->AlbumPage_Images()->First()) ? $first->Alt : null;
 		}		
 	}
 	  

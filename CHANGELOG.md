@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.1.1]
+- Bug fix, errored on Gallery view when album had no images
+
 ## [1.1.0]
 - Removed ajax loading of album images. Images are now printed in album page template.
 
