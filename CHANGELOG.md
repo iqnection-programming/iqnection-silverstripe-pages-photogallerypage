@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.1.2]
+- Improvements to the code
+
 ## [1.1.1]
 - Bug fix, errored on Gallery view when album had no images
 
