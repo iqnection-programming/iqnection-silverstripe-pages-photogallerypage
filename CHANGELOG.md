@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [1.1.3]
+- Moved gallery and album page settings into developer tab
+
 ## [1.1.2]
 - Improvements to the code
 

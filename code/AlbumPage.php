@@ -162,11 +162,11 @@ class AlbumPage extends Page
 		
 		$fields = parent::getCMSFields();
 		
-		$fields->addFieldToTab('Root.Developer', new HeaderField('head1','Layout 2 Setup') );
-		$fields->addFieldToTab('Root.Developer', new NumericField('ThumbnailWidth','Thumbnail Width (default: 340)') );
-		$fields->addFieldToTab('Root.Developer', new NumericField('ThumbnailHeight','Thumbnail Height (default: 340)') );
-		$fields->addFieldToTab('Root.Developer', new NumericField('FullSizeWidth','Full Size Width (default: 1000)') );
-		$fields->addFieldToTab('Root.Developer', new NumericField('FullSizeHeight','Full Size Height (default: 800)') );
+		$fields->addFieldToTab('Root.Developer.AlbumSettings', new HeaderField('head1','Layout 2 Setup') );
+		$fields->addFieldToTab('Root.Developer.AlbumSettings', new NumericField('ThumbnailWidth','Thumbnail Width (default: 340)') );
+		$fields->addFieldToTab('Root.Developer.AlbumSettings', new NumericField('ThumbnailHeight','Thumbnail Height (default: 340)') );
+		$fields->addFieldToTab('Root.Developer.AlbumSettings', new NumericField('FullSizeWidth','Full Size Width (default: 1000)') );
+		$fields->addFieldToTab('Root.Developer.AlbumSettings', new NumericField('FullSizeHeight','Full Size Height (default: 800)') );
 
 		$fields->addFieldToTab('Root.Images', GridField::create(
 			'AlbumPage_Images',
