@@ -1,20 +1,19 @@
 #gallery_thumbs							{ list-style:none; margin:0 !important; }
-#gallery_thumbs:after					{ content:"."; display:block; height:0; clear:both; zoom:1; visibility:hidden; }
+#gallery_thumbs:after					{ content:""; display:block; height:0; clear:both; zoom:1; visibility:hidden; }
 #gallery_thumbs li						{ margin:1.3% 0 0 1.3% !important; float:left; width:24%; }
-#gallery_thumbs a						{ display:block; text-decoration:none; padding-bottom:15%; position:relative; }
+#gallery_thumbs a						{ display:block; text-decoration:none; }
 #gallery_thumbs a:hover					{ text-decoration:none; }
 #gallery_thumbs img						{ width:100%; display:block; }
-#gallery_thumbs h4						{ width:100%; padding:4%; margin:0; background:#191919; color:#FFF; font-size:16px; line-height:20px; position:absolute; bottom:0; left:0;
-										-webkit-transition: all 150ms ease;
-										-moz-transition: all 150ms ease;
-										-ms-transition: all 150ms ease;
-										-o-transition: all 150ms ease;
-										transition: all 150ms ease;
-										}
-#gallery_thumbs a:hover h4				{ background:#0d0d0d; padding-bottom:7%; }										
+#gallery_thumbs h4						{ padding:4%; margin:0; font-size:18px; line-height:1.2em; text-align:center; 
+	-webkit-transition: all 150ms ease;
+	-moz-transition: all 150ms ease;
+	-ms-transition: all 150ms ease;
+	-o-transition: all 150ms ease;
+	transition: all 150ms ease; }
+#gallery_thumbs a:hover h4				{ background:#efefef; }										
 
 @media (min-width:600px) {
-	#gallery_thumbs li:nth-child(4n+1)	{ margin-left:0 !important; }
+	#gallery_thumbs li:nth-child(4n+1)	{ margin-left:0 !important; clear:left; }
 }
 
 @media (max-width:599px){
@@ -23,12 +22,12 @@
 
 @media (max-width:599px) and (min-width:400px){	
 	#gallery_thumbs li					{ width:32.46%; }
-	#gallery_thumbs li:nth-child(3n+1)	{ margin-left:0 !important; }
+	#gallery_thumbs li:nth-child(3n+1)	{ margin-left:0 !important; clear:left; }
 }
 
 @media (max-width:399px) and (min-width:321px){
 	#gallery_thumbs li					{ width:49.35%; }
-	#gallery_thumbs li:nth-child(2n+1)	{ margin-left:0 !important; }
+	#gallery_thumbs li:nth-child(2n+1)	{ margin-left:0 !important; clear:left; }
 }
 
 @media (max-width:320px){

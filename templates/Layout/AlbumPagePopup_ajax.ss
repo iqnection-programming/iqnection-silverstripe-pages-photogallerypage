@@ -1,1 +1,0 @@
-<% include AlbumPage_PhotoArea %>

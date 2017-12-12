@@ -1,4 +1,4 @@
-<h1>$MenuTitle</h1>
+<h1>$Photo.Title</h1>
 <div id="left">
     <a id="back" href="$AbsoluteLink">&larr; Back to Gallery</a>
 </div><!--left-->
@@ -6,17 +6,20 @@
     <p id="count">$Number of $Count</p>
 </div><!--right-->
 <div id="nav">
-    <a id="prev" href="{$AbsoluteLink}photo/$Prev">&larr; Previous</a>
-    <a id="next" href="{$AbsoluteLink}photo/$Next">Next &rarr;</a>
+    <% if $PrevPhoto.Exists %><a id="prev" href="$PrevPhoto.Link">&larr; Previous</a><% end_if %>
+    <% if $NextPhoto.Exists %><a id="next" href="$NextPhoto.Link">Next &rarr;</a><% end_if %>
 </div><!--nav-->
-<% include AlbumPage_PhotoArea %>
 
-<script language="javascript" type="text/javascript">
-(function($){
-		
-		$(document).ready(function(){
-			$('#photo_wrap a').fancybox();
-		});		
-		
-})(jQuery)
-</script>
+<% with Photo %>
+    <div id="photo_wrap" class="<% if $Title || $Description %>shared<% else %>full<% end_if %>">
+        <img id="photo" src="$LargeImage.URL" alt="$Alt" title="$Title" />
+    </div><!--photo_wrap-->
+    <% if $Title || $Description %>
+        <div id="content_wrap" class="typography">
+            <div id="content_padding">
+                <% if Title %><h3>$Title</h3><% end_if %>
+                $Description
+            </div><!--content_padding-->
+        </div><!--content_wrap-->
+    <% end_if %>
+<% end_with %>
