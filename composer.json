@@ -1,7 +1,8 @@
 {
 	"name": "iqnection-pages/photogallerypage",
-	"description": "SilverStripe 3 Photo Gallery Page",
+	"description": "SilverStripe Photo Gallery Page",
 	"type": "silverstripe-module",
+	"license": "BSD-3-Clause",
 	"keywords": ["iqnection","pages"],
 	"authors": [
 		{
@@ -10,7 +11,7 @@
 		}
 	],
 	"require": {
-		"silverstripe/framework": ">=3.0",
+		"silverstripe/framework": "4.*",
 		"iqnection-pages/basepages":"*"
 	},
 	"extra": {

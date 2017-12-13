@@ -1,6 +1,8 @@
 ## Package: iqnection-silverstripe-3-pages-photogallerypage
 # Change Log
 
+## [2.0.0]
+- updated for SilverStripe 4
 
 ## [1.1.3]
 - Moved gallery and album page settings into developer tab
