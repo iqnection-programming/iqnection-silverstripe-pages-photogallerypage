@@ -12,7 +12,9 @@ class AlbumPage extends Page
 		'ThumbnailWidth' => 'Int',
 		'ThumbnailHeight' => 'Int',
 		'FullSizeWidth' => 'Int',
-		'FullSizeHeight' => 'Int'
+		'FullSizeHeight' => 'Int',
+		"OverrideLayout" => "Boolean",
+		"OverrideLayoutType" => "Enum('Individual,Split','Individual')",
 	];
 	
 	private static $has_many = [
@@ -31,7 +33,8 @@ class AlbumPage extends Page
 		'ThumbnailWidth' => '400',
 		'ThumbnailHeight' => '400',
 		'FullSizeWidth' => '1200',
-		'FullSizeHeight' => '1000'
+		'FullSizeHeight' => '1000',
+		'OverrideLayoutType' => 'Individual'
 	];
 	
 	private static $allowed_children = [];
@@ -48,7 +51,12 @@ class AlbumPage extends Page
 		$fields->addFieldToTab('Root.Developer.AlbumSettings', Forms\NumericField::create('ThumbnailHeight','Thumbnail Height (default: 340)') );
 		$fields->addFieldToTab('Root.Developer.AlbumSettings', Forms\NumericField::create('FullSizeWidth','Full Size Width (default: 1000)') );
 		$fields->addFieldToTab('Root.Developer.AlbumSettings', Forms\NumericField::create('FullSizeHeight','Full Size Height (default: 800)') );
-
+		$fields->addFieldToTab('Root.Developer.AlbumSettings', Forms\NumericField::create('OverrideLayout','Override the Gallery Selected Layout') );
+		$fields->addFieldToTab("Root.Developer.AlbumSettings", Forms\OptionsetField::create("OverrideLayoutType", "Album Layout Type:", array(
+			"Split" => DBField::create_field('HTMLText',"<span>All-In-One<br /><img src='/iq-photogallerypage/images/photo_gallery_layout_1.gif' /></span>"), 
+			"Individual" => DBField::create_field('HTMLText',"<span>Large Thumbnails<br /><img src='/iq-photogallerypage/images/photo_gallery_layout_2.gif' /></span>")
+		)));
+		
 		$fields->addFieldToTab('Root.Images', Forms\GridField\GridField::create(
 			'AlbumPageImages',
 			'Album Images',

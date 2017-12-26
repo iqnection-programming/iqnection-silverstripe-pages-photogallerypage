@@ -1,6 +1,10 @@
 ## Package: iqnection-silverstripe-3-pages-photogallerypage
 # Change Log
 
+
+## [2.0.1]
+- added ability to override gallery layout at the AlbumPage level. this applies when an album page is a child or a non-gallery page type
+
 ## [2.0.0]
 - updated for SilverStripe 4
 

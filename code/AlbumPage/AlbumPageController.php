@@ -8,6 +8,15 @@ class AlbumPageController extends PageController
 		"photo"			
 	);
 	
+	public function LayoutType()
+	{
+		if ( ($this->Parent()->ClassName == 'GalleryPage') && (!$this->OverrideLayout) )
+		{
+			return $this->Parent()->LayoutType;
+		}
+		return $this->OverrideLayoutType;
+	}
+	
 	public function PageCSS()
 	{
 		return array_merge(
@@ -21,7 +30,7 @@ class AlbumPageController extends PageController
 	public function PageJS()
 	{
 		return array_merge([
-				"/javascript/pages/AlbumPage_".strtolower($this->Parent()->LayoutType).".js",
+				"/javascript/pages/AlbumPage_".strtolower($this->LayoutType()).".js",
 				"/fancybox3/jquery.fancybox.js",
 			],
 			parent::PageJS()
@@ -51,6 +60,7 @@ class AlbumPageController extends PageController
 					],
 					'title' => $image->Title,
 					'description' => $image->Description,
+					'full_description' => $image->FullDescription()->forTemplate(),
 					'image_alt' => $image->Alt
 				];
 			}
@@ -61,8 +71,12 @@ class AlbumPageController extends PageController
 	
 	public function index()
 	{
-		$templates = array('AlbumPage_layout_'.strtolower($this->Parent()->LayoutType));
-		if (class_exists('IqMinisitePage') && $this->MinisiteParent()) $templates[] = 'MinisitePage';
+		$templates = [];
+		$templates[] = 'AlbumPage_layout_'.strtolower($this->LayoutType());
+		if (class_exists('IqMinisitePageExtension') && $this->MinisiteParent())
+		{
+			$templates[] = 'MinisitePage';
+		}
 		$templates[] = 'Page';
 		return $this->renderWith($templates);
 	}

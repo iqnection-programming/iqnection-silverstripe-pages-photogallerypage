@@ -38,7 +38,8 @@ class AlbumPageImage extends ORM\DataObject
 	];
 	
 	private static $casting = [
-		"CMSThumbnail" => "HTMLText"
+		"CMSThumbnail" => "HTMLText",
+		"FullDescription" => "HTMLText"
 	];
 	
 	public function CMSThumbnail() 
@@ -114,6 +115,11 @@ class AlbumPageImage extends ORM\DataObject
 	public function AbsoluteLink()
 	{
 		return Director::absoluteURL($this->Link());
+	}
+	
+	public function FullDescription()
+	{
+		return $this->renderWith('AlbumPageImageFullDescription');
 	}
 	
 }

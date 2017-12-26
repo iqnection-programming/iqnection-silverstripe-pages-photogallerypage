@@ -8,7 +8,7 @@
 				type : 'image',
 				src : this.fullsize_image.url,
 				opts : {
-					caption : this.description,
+					caption : this.full_description,
 					width : this.fullsize_image.width,
 					height: this.fullsize_image.height,
 					photo_id : this.id,
