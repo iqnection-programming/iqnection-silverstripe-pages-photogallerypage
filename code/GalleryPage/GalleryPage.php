@@ -28,6 +28,7 @@ class GalleryPage extends Page
 	];
 	
 	private static $defaults = [
+		'LayoutType' => 'Individual',
 		'ThumbnailWidth' => '400',
 		'ThumbnailHeight' => '400',
 	];

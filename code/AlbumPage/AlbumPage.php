@@ -2,6 +2,7 @@
 
 use SilverStripe\Forms;
 use SilverStripe\AssetAdmin\Forms\UploadField;
+use SilverStripe\ORM\FieldType\DBField;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 class AlbumPage extends Page
