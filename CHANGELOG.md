@@ -2,6 +2,9 @@
 # Change Log
 
 
+## [2.0.2]
+- added validation to make sure an image is provided on an AlbumPageImage object (duh)
+
 ## [2.0.1]
 - added ability to override gallery layout at the AlbumPage level. this applies when an album page is a child or a non-gallery page type
 

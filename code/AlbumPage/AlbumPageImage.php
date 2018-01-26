@@ -72,6 +72,16 @@ class AlbumPageImage extends ORM\DataObject
 	public function canEdit($member = null, $context = array()) { return true; }
 	public function canView($member = null, $context = array()) { return true; }
 	
+	public function validate()
+	{
+		$result = parent::validate();
+		if (!$this->Image()->Exists())
+		{
+			$result->addError('Please upload an image');
+		}
+		return $result;
+	}
+	
 	public function onAfterWrite()
 	{
 		parent::onAfterWrite();
