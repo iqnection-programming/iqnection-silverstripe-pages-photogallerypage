@@ -1,8 +1,10 @@
 <?php
 
+namespace IQnection\AlbumPage;
+
 use SilverStripe\Core\Config\Config;
 
-class AlbumPageController extends PageController
+class AlbumPageController extends \PageController
 {
 	private static $allowed_actions = array(
 		"photo"			
@@ -73,7 +75,7 @@ class AlbumPageController extends PageController
 	{
 		$templates = [];
 		$templates[] = 'AlbumPage_layout_'.strtolower($this->LayoutType());
-		if (class_exists('IqMinisitePageExtension') && $this->MinisiteParent())
+		if (class_exists(\IQnection\Minisite\PageExtension::class) && $this->MinisiteParent())
 		{
 			$templates[] = 'MinisitePage';
 		}

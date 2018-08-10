@@ -1,5 +1,7 @@
 <?php
 
+namespace IQnection\AlbumPage\Model;
+
 use SilverStripe\ORM;
 use SilverStripe\Forms;
 use SilverStripe\AssetAdmin\Forms\UploadField;
@@ -8,6 +10,8 @@ use SilverStripe\Assets\Image;
 
 class AlbumPageImage extends ORM\DataObject
 {
+	private static $table_name = 'AlbumPageImage';
+	
 	private static $singular_name = 'Album Image';
 	private static $plural_name = 'Album Images';
 	
@@ -24,7 +28,7 @@ class AlbumPageImage extends ORM\DataObject
 	private static $default_sort = "SortOrder";
 	
 	private static $has_one = [
-		"AlbumPage" => AlbumPage::class,
+		"AlbumPage" => \IQnection\AlbumPage\AlbumPage::class,
 		"Image" => Image::class,
 	];
 	

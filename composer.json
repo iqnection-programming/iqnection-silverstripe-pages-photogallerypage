@@ -11,10 +11,22 @@
 		}
 	],
 	"require": {
-		"silverstripe/framework": "4.*",
-		"iqnection-pages/basepages":"*"
+		"silverstripe/framework": "^4.1",
+		"iqnection-pages/basepages":"^2.1"
 	},
 	"extra": {
-		"installer-name": "iq-photogallerypage"
+		"expose": [
+			"css",
+			"fancybox",
+			"fancybox3",
+			"images",
+			"javascript"
+		]
+	},
+	"autoload": {
+		"psr-4": {
+			"IQnection\\AlbumPage\\": "app/src/",
+			"IQnection\\GalleryPage\\": "app/src/"
+		}
 	}
 }

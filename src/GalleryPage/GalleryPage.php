@@ -1,12 +1,16 @@
 <?php
 
+namespace IQnection\GalleryPage;
+
 use SilverStripe\Forms;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\ORM\FieldType\DBField;
 
-class GalleryPage extends Page
+class GalleryPage extends \Page
 {
-	private static $icon = "iq-photogallerypage/images/icons/icon-gallerypage-file.gif";
+	private static $table_name = 'GalleryPage';
+	
+	private static $icon = "resources/iqnection-pages/photogallerypage/images/icons/icon-gallerypage-file.gif";
 	
 	private static $db = [
 		"LayoutType" => "Enum('Individual,Split','Individual')",
@@ -36,7 +40,7 @@ class GalleryPage extends Page
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
-		if ($this->Parent()->ClassName == 'GalleryPage')
+		if ($this->Parent()->ClassName == \IQnection\PhotoGalleryPage\GalleryPage::class)
 		{
 			$fields->addFieldToTab('Root.Main', UploadField::create('OverrideGalleryImage','Override Parent Gallery Thumbnail')
 				->setAllowedFileCategories('image/supported') );

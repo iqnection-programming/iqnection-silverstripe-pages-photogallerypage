@@ -1,13 +1,15 @@
 <?php
 
+namespace IQnection\AlbumPage;
+
 use SilverStripe\Forms;
 use SilverStripe\AssetAdmin\Forms\UploadField;
 use SilverStripe\ORM\FieldType\DBField;
 use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
-class AlbumPage extends Page
+class AlbumPage extends \Page
 {
-	private static $icon = "iq-photogallerypage/images/icons/icon-albumpage-file.gif";
+	private static $icon = "resources/iqnection-pages/photogallerypage/images/icons/icon-albumpage-file.gif";
 	
 	private static $db = [
 		'ThumbnailWidth' => 'Int',
@@ -19,7 +21,7 @@ class AlbumPage extends Page
 	];
 	
 	private static $has_many = [
-		"AlbumPageImages" => AlbumPageImage::class
+		"AlbumPageImages" => Model\AlbumPageImage::class
 	];
 	
 	private static $has_one = [

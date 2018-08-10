@@ -1,6 +1,8 @@
 ## Package: iqnection-silverstripe-3-pages-photogallerypage
 # Change Log
 
+## [2.1.0]
+- updated to follow SS 4.1 /public/ directory structure
 
 ## [2.0.2]
 - added validation to make sure an image is provided on an AlbumPageImage object (duh)
