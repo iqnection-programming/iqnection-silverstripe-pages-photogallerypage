@@ -9,7 +9,8 @@ use UndefinedOffset\SortableGridField\Forms\GridFieldSortableRows;
 
 class AlbumPage extends \Page
 {
-	private static $icon = "resources/iqnection-pages/photogallerypage/images/icons/icon-albumpage-file.gif";
+	private static $icon = "iqnection-pages/photogallerypage:images/icons/icon-albumpage-file.gif";
+	private static $table_name = 'AlbumPage';
 	
 	private static $db = [
 		'ThumbnailWidth' => 'Int',

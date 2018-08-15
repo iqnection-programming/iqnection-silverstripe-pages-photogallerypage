@@ -10,7 +10,7 @@ class GalleryPage extends \Page
 {
 	private static $table_name = 'GalleryPage';
 	
-	private static $icon = "resources/iqnection-pages/photogallerypage/images/icons/icon-gallerypage-file.gif";
+	private static $icon = "iqnection-pages/photogallerypage:images/icons/icon-gallerypage-file.gif";
 	
 	private static $db = [
 		"LayoutType" => "Enum('Individual,Split','Individual')",
