@@ -54,6 +54,8 @@ class AlbumPageImage extends ORM\DataObject
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
+		$fields->removeByName('LinkTracking');
+		$fields->removeByName('FileTracking');
 		$fields->push( Forms\HiddenField::create('SortOrder',null,$fields->dataFieldByName('SortOrder')->Value()) );
 		
 		$fields->addFieldToTab('Root.Main', UploadField::create("Image", "Image")->setAllowedFileCategories('image/supported') );

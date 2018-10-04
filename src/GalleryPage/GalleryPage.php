@@ -27,8 +27,8 @@ class GalleryPage extends \Page
 	];
 	
 	private static $allowed_children = [
-		"GalleryPage",
-		"AlbumPage"
+		\IQnection\GalleryPage\GalleryPage::class,
+		\IQnection\AlbumPage\AlbumPage::class
 	];
 	
 	private static $defaults = [
@@ -40,7 +40,7 @@ class GalleryPage extends \Page
 	public function getCMSFields()
 	{
 		$fields = parent::getCMSFields();
-		if ($this->Parent()->ClassName == \IQnection\PhotoGalleryPage\GalleryPage::class)
+		if ($this->Parent()->ClassName == \IQnection\GalleryPage\GalleryPage::class)
 		{
 			$fields->addFieldToTab('Root.Main', UploadField::create('OverrideGalleryImage','Override Parent Gallery Thumbnail')
 				->setAllowedFileCategories('image/supported') );
