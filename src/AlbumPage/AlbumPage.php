@@ -57,8 +57,8 @@ class AlbumPage extends \Page
 		$fields->addFieldToTab('Root.Developer.AlbumSettings', Forms\NumericField::create('FullSizeHeight','Full Size Height (default: 800)') );
 		$fields->addFieldToTab('Root.Developer.AlbumSettings', Forms\NumericField::create('OverrideLayout','Override the Gallery Selected Layout') );
 		$fields->addFieldToTab("Root.Developer.AlbumSettings", Forms\OptionsetField::create("OverrideLayoutType", "Album Layout Type:", array(
-			"Split" => DBField::create_field('HTMLText',"<span>All-In-One<br /><img src='/iq-photogallerypage/images/photo_gallery_layout_1.gif' /></span>"), 
-			"Individual" => DBField::create_field('HTMLText',"<span>Large Thumbnails<br /><img src='/iq-photogallerypage/images/photo_gallery_layout_2.gif' /></span>")
+			"Split" => DBField::create_field('HTMLText','<span>All-In-One<br /><img src="'.\SilverStripe\Core\Manifest\ModuleResourceLoader::singleton()->resolveURL('iqnection-pages/photogallerypage:images/photo_gallery_layout_1.gif').'" /></span>'), 
+			"Individual" => DBField::create_field('HTMLText','<span>Large Thumbnails<br /><img src="'.\SilverStripe\Core\Manifest\ModuleResourceLoader::singleton()->resolveURL('iqnection-pages/photogallerypage:images/photo_gallery_layout_2.gif').'" /></span>')
 		)));
 		
 		$fields->addFieldToTab('Root.Images', Forms\GridField\GridField::create(

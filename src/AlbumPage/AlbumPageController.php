@@ -74,7 +74,7 @@ class AlbumPageController extends \PageController
 	public function index()
 	{
 		$templates = [];
-		$templates[] = 'AlbumPage_layout_'.strtolower($this->LayoutType());
+		$templates[] = 'IQnection\AlbumPage\AlbumPage_layout_'.strtolower($this->LayoutType());
 		if (class_exists(\IQnection\Minisite\PageExtension::class) && $this->MinisiteParent())
 		{
 			$templates[] = 'MinisitePage';

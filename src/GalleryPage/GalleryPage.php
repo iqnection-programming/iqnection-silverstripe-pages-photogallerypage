@@ -48,8 +48,8 @@ class GalleryPage extends \Page
 		$fields->findOrMakeTab('Root.Developer.GallerySettings');
 		$fields->addFieldToTab("Root.Developer.GallerySettings", Forms\LiteralField::create("Desc1", "<p>The layout chosen below will affect all galleries under this page.  You may override this layout choice on individual gallery pages if you wish.</p><br />"));
 		$fields->addFieldToTab("Root.Developer.GallerySettings", Forms\OptionsetField::create("LayoutType", "Choose your layout:", array(
-			"Split" => DBField::create_field('HTMLText',"<span>All-In-One<br /><img src='/iq-photogallerypage/images/photo_gallery_layout_1.gif' /></span>"), 
-			"Individual" => DBField::create_field('HTMLText',"<span>Large Thumbnails<br /><img src='/iq-photogallerypage/images/photo_gallery_layout_2.gif' /></span>")
+			"Split" => DBField::create_field('HTMLText','<span>All-In-One<br /><img src="'.\SilverStripe\Core\Manifest\ModuleResourceLoader::singleton()->resolveURL('iqnection-pages/photogallerypage:images/photo_gallery_layout_1.gif').'" /></span>'), 
+			"Individual" => DBField::create_field('HTMLText','<span>Large Thumbnails<br /><img src="'.\SilverStripe\Core\Manifest\ModuleResourceLoader::singleton()->resolveURL('iqnection-pages/photogallerypage:images/photo_gallery_layout_2.gif').'" /></span>')
 		)));
 
 		$fields->addFieldToTab('Root.Developer.GallerySettings', Forms\HeaderField::create('head1','Layout 2 Setup') );

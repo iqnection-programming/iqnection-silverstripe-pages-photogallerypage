@@ -78,6 +78,16 @@ class AlbumPageImage extends ORM\DataObject
 	public function canEdit($member = null, $context = array()) { return true; }
 	public function canView($member = null, $context = array()) { return true; }
 	
+	public function getBetterButtonsActions()
+	{
+		$actions = parent::getBetterButtonsActions();
+		if ($betterButtonsLinkAction = $actions->find('name',''))
+		{
+			$actions->remove($betterButtonsLinkAction);
+		}
+		return $actions;
+	}
+	
 	public function validate()
 	{
 		$result = parent::validate();
@@ -135,7 +145,7 @@ class AlbumPageImage extends ORM\DataObject
 	
 	public function FullDescription()
 	{
-		return $this->renderWith('AlbumPageImageFullDescription');
+		return $this->renderWith('IQnection\AlbumPage\AlbumPageImageFullDescription');
 	}
 	
 }
