@@ -1,6 +1,9 @@
 ## Package: iqnection-silverstripe-3-pages-photogallerypage
 # Change Log
 
+## [2.2.0]
+- Overall improvements/enhancements to HTML/CSS/JS
+
 ## [2.1.0]
 - updated to follow SS 4.1 /public/ directory structure
 

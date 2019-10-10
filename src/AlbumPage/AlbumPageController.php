@@ -2,8 +2,6 @@
 
 namespace IQnection\AlbumPage;
 
-use SilverStripe\Core\Config\Config;
-
 class AlbumPageController extends \PageController
 {
 	private static $allowed_actions = array(
@@ -12,11 +10,12 @@ class AlbumPageController extends \PageController
 	
 	public function LayoutType()
 	{
-		if ( ($this->Parent()->ClassName == 'GalleryPage') && (!$this->OverrideLayout) )
+		$LayoutType = $this->LayoutType;
+		if ( (!$this->OverrideLayout) && ($this->Parent()->Exists()) && ($this->Parent() instanceof \IQnection\GalleryPage\GalleryPage) )
 		{
-			return $this->Parent()->LayoutType;
+			$LayoutType = $this->Parent()->LayoutType;
 		}
-		return $this->OverrideLayoutType;
+		return $LayoutType;
 	}
 	
 	public function PageCSS()
@@ -39,10 +38,8 @@ class AlbumPageController extends \PageController
 		);
 	}
 	
-	public function CustomJS()
+	public function getAlbumImagesJsData()
 	{
-		$js = parent::CustomJS();
-		
 		$imagesArray = array();
 		foreach($this->AlbumPageImages() as $image)
 		{
@@ -67,6 +64,15 @@ class AlbumPageController extends \PageController
 				];
 			}
 		}
+		$this->extend('updateAlbumImagesJsData', $imagesArray);
+		return $imagesArray;
+	}
+	
+	public function CustomJS()
+	{
+		$js = parent::CustomJS();
+		
+		$imagesArray = $this->getAlbumImagesJsData();
 		$js .= "var images = ".json_encode($imagesArray).";";
 		return $js;
 	}
@@ -80,6 +86,7 @@ class AlbumPageController extends \PageController
 			$templates[] = 'MinisitePage';
 		}
 		$templates[] = 'Page';
+		$this->extend('updateTemplates', $templates);
 		return $this->renderWith($templates);
 	}
 
@@ -101,7 +108,7 @@ class AlbumPageController extends \PageController
 			$data['MetaTitle'] = $photo->MetaTitle;
 			$data['MetaKeywords'] = $photo->MetaKeywords;	
 			$data['MetaDescription'] = $photo->MetaDescription;
-			return $this->Customise($data)->renderWith(array("AlbumPage_photo","Page"));
+			return $this->Customise($data)->renderWith(array("IQnection/AlbumPage/AlbumPage_photo","Page"));
 		}
 		//404 without 404-ing
 		return $this->redirect($this->Link());

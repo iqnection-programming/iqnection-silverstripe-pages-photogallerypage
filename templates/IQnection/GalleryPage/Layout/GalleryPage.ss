@@ -4,12 +4,7 @@ $Content
     <ul id="gallery_thumbs">
         <% loop $Children %>
             <li>
-				<a href="$Link" $NavNoFollow>
-					<% if $GalleryThumbnail.Exists %>
-						<img src="$GalleryThumbnail.URL" alt="$Title">
-					<% end_if %>
-					<h4>$Title</h4>
-				</a>
+				<% include GalleryPage_thumbnail %>
 			</li>
         <% end_loop %>  
     </ul><!--gallery_thumbs-->
